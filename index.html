@@ -1,16 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0d0d1a" />
-    <meta name="description" content="Scripture WordPlay - The Biblical Word Guessing Game" />
-    <title>Scripture WordPlay | johnsravya.in</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scripture WordPlay | johnsravya.com</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#0d0d1a;font-family:'Cinzel',serif;overflow-x:hidden}
+    #root{min-height:100vh;display:flex;flex-direction:column;align-items:center;background:linear-gradient(160deg,#0d0d1a 0%,#1a1025 40%,#0d1a0d 100%);padding-bottom:20px}
+    header{width:100%;max-width:480px;display:flex;align-items:center;justify-content:space-between;padding:16px 20px 8px;border-bottom:1px solid #c9942a33}
+    .title-main{font-size:26px;font-weight:700;color:#c9942a;letter-spacing:6px;text-shadow:0 0 20px #c9942a44;text-align:center}
+    .title-sub{font-size:9px;color:#e8dcc866;letter-spacing:4px;margin-top:2px;text-align:center}
+    .title-domain{font-size:8px;color:#c9942a55;letter-spacing:2px;margin-top:1px;text-align:center}
+    .icon-btn{background:none;border:none;font-size:20px;cursor:pointer;padding:4px}
+    .hint-bar{display:flex;align-items:center;gap:10px;background:#c9942a18;border:1px solid #c9942a44;border-radius:8px;padding:8px 16px;margin:8px 20px 0;max-width:440px;width:calc(100% - 40px);animation:fadeDown 0.3s ease}
+    .hint-text{font-family:'IM Fell English',serif;font-style:italic;color:#e8dcc8;font-size:14px;text-align:center;flex:1}
+    .toast{position:fixed;top:80px;left:50%;transform:translateX(-50%);background:#1e1e2e;border:1px solid #c9942a66;color:#e8dcc8;font-family:'IM Fell English',serif;font-size:15px;padding:10px 20px;border-radius:8px;z-index:100;animation:fadeDown 0.3s ease;white-space:nowrap}
+    .badge{font-size:10px;color:#c9942a88;letter-spacing:3px;text-transform:uppercase;margin:12px 0 8px}
+    .grid{display:flex;flex-direction:column;gap:6px;padding:4px 0 12px}
+    .row{display:flex;gap:6px}
+    .tile{display:flex;align-items:center;justify-content:center;font-weight:700;border-radius:6px;user-select:none;text-shadow:0 1px 3px #00000088;font-family:'Cinzel',serif;transition:background 0.3s}
+    .keyboard{display:flex;flex-direction:column;gap:6px;padding:0 8px}
+    .kb-row{display:flex;gap:5px;justify-content:center}
+    .key{height:46px;min-width:32px;padding:0 6px;border:1px solid #4a4a6a;border-radius:6px;cursor:pointer;font-family:'Cinzel',serif;font-weight:600;font-size:15px;background:#2a2a3e;color:#e8dcc8;transition:all 0.15s;user-select:none}
+    .key-wide{min-width:52px;font-size:11px}
+    .key-correct{background:#4a7c59!important;border-color:#4a7c59!important;color:#fff!important}
+    .key-present{background:#c9942a!important;border-color:#c9942a!important;color:#fff!important}
+    .key-absent{background:#3a3a4a!important;border-color:#3a3a4a!important;color:#fff!important}
+    .modal-overlay{position:fixed;inset:0;background:#00000088;display:flex;align-items:center;justify-content:center;z-index:200;backdrop-filter:blur(4px)}
+    .modal{background:linear-gradient(135deg,#1a1a2e,#0d1a0d);border:1px solid #c9942a55;border-radius:16px;padding:32px 28px;max-width:340px;width:90%;text-align:center;position:relative;animation:modalIn 0.4s ease;box-shadow:0 20px 60px #00000099,0 0 40px #c9942a11}
+    .modal-close{position:absolute;top:12px;right:14px;background:none;border:none;color:#e8dcc866;font-size:16px;cursor:pointer}
+    .modal-title{font-family:'Cinzel',serif;font-size:22px;font-weight:700;color:#c9942a;letter-spacing:3px;margin-bottom:12px}
+    .modal-word{font-family:'Cinzel',serif;font-size:32px;font-weight:700;color:#e8dcc8;letter-spacing:8px;margin-bottom:6px;text-shadow:0 0 20px #c9942a44}
+    .modal-hint{font-family:'IM Fell English',serif;font-style:italic;color:#e8dcc899;font-size:14px;margin-bottom:20px}
+    .modal-stats{display:flex;justify-content:center;gap:32px;margin-bottom:20px}
+    .stat-num{font-family:'Cinzel',serif;font-size:28px;font-weight:700;color:#4a7c59}
+    .stat-label{font-family:'Cinzel',serif;font-size:10px;color:#e8dcc866;letter-spacing:2px;text-transform:uppercase}
+    .verse{font-family:'IM Fell English',serif;font-style:italic;color:#c9942a88;font-size:12px;border-top:1px solid #c9942a22;padding-top:14px;line-height:1.6}
+    @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+    @keyframes fadeDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes modalIn{from{opacity:0;transform:scale(0.9) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+    @keyframes flip{0%{transform:rotateX(0)}50%{transform:rotateX(-90deg);opacity:0.4}100%{transform:rotateX(0)}}
+    @keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.12)}100%{transform:scale(1)}}
+    .hidden{display:none}
+  </style>
+</head>
+<body>
+<div id="root">
+  <header>
+    <div style="width:40px"><span style="font-size:24px">📜</span></div>
+    <div>
+      <div class="title-main">SCRIPTURE</div>
+      <div class="title-sub">W · O · R · D · P · L · A · Y</div>
+      <div class="title-domain">johnsravya.com</div>
+    </div>
+    <div style="width:40px;display:flex;justify-content:flex-end">
+      <button class="icon-btn" onclick="toggleHint()" title="Hint">🕯️</button>
+    </div>
+  </header>
+
+  <div id="hint-bar" class="hint-bar hidden">
+    <span style="color:#c9942a;font-size:12px">✝</span>
+    <span class="hint-text" id="hint-text"></span>
+    <span style="color:#c9942a;font-size:12px">✝</span>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <div class="badge" id="badge"></div>
+  <div class="grid" id="grid"></div>
+  <div class="keyboard" id="keyboard"></div>
+
+  <div id="modal" class="modal-overlay hidden">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div id="modal-icon" style="font-size:40px;margin-bottom:8px"></div>
+      <div class="modal-title" id="modal-title"></div>
+      <div class="modal-word" id="modal-word"></div>
+      <div class="modal-hint" id="modal-hint"></div>
+      <div class="modal-stats">
+        <div><div class="stat-num" id="stat-attempts"></div><div class="stat-label">ATTEMPTS</div></div>
+        <div><div class="stat-num" id="stat-points" style="color:#c9942a"></div><div class="stat-label">POINTS</div></div>
+      </div>
+      <div class="verse">"Thy word is a lamp unto my feet" — Psalm 119:105</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const WORDS = [
+  {word:"MOSES",hint:"Led Israel out of Egypt"},
+  {word:"DAVID",hint:"Slew Goliath, became King"},
+  {word:"GRACE",hint:"Unmerited divine favour"},
+  {word:"FAITH",hint:"Confidence in what we hope for"},
+  {word:"ANGEL",hint:"Heavenly messenger"},
+  {word:"PSALM",hint:"Sacred song or hymn"},
+  {word:"ELIJAH",hint:"Prophet taken to heaven in a chariot"},
+  {word:"GOSPEL",hint:"Good news of salvation"},
+  {word:"TEMPLE",hint:"House of God in Jerusalem"},
+  {word:"SAMSON",hint:"Judge known for great strength"},
+  {word:"ESTHER",hint:"Queen who saved her people"},
+  {word:"JOSEPH",hint:"Dreamer sold by his brothers"},
+  {word:"DANIEL",hint:"Survived the lion's den"},
+  {word:"PRAYER",hint:"Communion with God"},
+  {word:"ISAIAH",hint:"Prophet who foretold the Messiah"},
+  {word:"EXODUS",hint:"Second book of the Bible"},
+  {word:"CANAAN",hint:"The Promised Land"},
+  {word:"ROMANS",hint:"Epistle by Paul"},
+  {word:"THRONE",hint:"God's seat of glory"},
+  {word:"SPIRIT",hint:"The Holy ______"},
+  {word:"PETER",hint:"The rock on whom the church was built"},
+  {word:"JACOB",hint:"Wrestled with God, renamed Israel"},
+  {word:"SARAH",hint:"Wife of Abraham, mother of Isaac"},
+  {word:"ISAAC",hint:"Son of promise to Abraham"},
+  {word:"MIRIAM",hint:"Sister of Moses, led women in song"},
+  {word:"JOSHUA",hint:"Led Israel into the Promised Land"},
+  {word:"GIDEON",hint:"Judge who defeated Midian with 300 men"},
+  {word:"NAOMI",hint:"Ruth's mother-in-law"},
+  {word:"PARABLE",hint:"A story with a spiritual lesson"},
+  {word:"SERMON",hint:"A religious address or discourse"},
+  {word:"BAPTISM",hint:"Sacrament of initiation by water"},
+  {word:"HEAVEN",hint:"Eternal dwelling place of God"},
+];
+
+const MAX = 6;
+const DAILY_IDX = Math.floor(Date.now()/86400000) % WORDS.length;
+const DAILY = WORDS[DAILY_IDX];
+const WORD = DAILY.word;
+const WLEN = WORD.length;
+
+let guesses = [], current = "", gameOver = false, hintVisible = false;
+
+const KB_ROWS = [
+  ["Q","W","E","R","T","Y","U","I","O","P"],
+  ["A","S","D","F","G","H","J","K","L"],
+  ["ENTER","Z","X","C","V","B","N","M","⌫"]
+];
+
+const colors = {correct:"#4a7c59",present:"#c9942a",absent:"#3a3a4a"};
+
+function init(){
+  document.getElementById("hint-text").textContent = DAILY.hint;
+  document.getElementById("badge").textContent = `${WLEN}-letter Biblical term • Puzzle #${DAILY_IDX+1}`;
+  buildGrid(); buildKeyboard();
+  document.addEventListener("keydown", e => handleKey(e.key.toUpperCase()));
+}
+
+function buildGrid(){
+  const grid = document.getElementById("grid");
+  grid.innerHTML = "";
+  const tileSize = WLEN>=7?44:WLEN>=6?48:52;
+  for(let r=0;r<MAX;r++){
+    const row = document.createElement("div");
+    row.className="row"; row.id=`row-${r}`;
+    for(let c=0;c<WLEN;c++){
+      const tile = document.createElement("div");
+      tile.className="tile";
+      tile.id=`tile-${r}-${c}`;
+      tile.style.cssText=`width:${tileSize}px;height:${tileSize}px;font-size:${tileSize-28}px;border:2px solid #5a5a7a44;color:#e8dcc8;background:transparent`;
+      row.appendChild(tile);
+    }
+    grid.appendChild(row);
+  }
+}
+
+function buildKeyboard(){
+  const kb = document.getElementById("keyboard");
+  kb.innerHTML="";
+  KB_ROWS.forEach(row=>{
+    const r=document.createElement("div"); r.className="kb-row";
+    row.forEach(k=>{
+      const btn=document.createElement("button");
+      btn.className="key"+(k==="ENTER"||k==="⌫"?" key-wide":"");
+      btn.id=`key-${k}`; btn.textContent=k;
+      btn.onclick=()=>handleKey(k);
+      r.appendChild(btn);
+    });
+    kb.appendChild(r);
+  });
+}
+
+function handleKey(key){
+  if(gameOver) return;
+  if(key==="ENTER"){submitGuess();return;}
+  if(key==="⌫"||key==="BACKSPACE"){current=current.slice(0,-1);updateActiveTiles();return;}
+  if(/^[A-Z]$/.test(key)&&current.length<WLEN){current+=key;updateActiveTiles();}
+}
+
+function updateActiveTiles(){
+  const row=guesses.length;
+  for(let c=0;c<WLEN;c++){
+    const tile=document.getElementById(`tile-${row}-${c}`);
+    tile.textContent=current[c]||"";
+    tile.style.border=c<current.length?"2px solid #c9942a88":"2px solid #5a5a7a66";
+    if(current[c]) tile.style.animation="pop 0.1s ease";
+    else tile.style.animation="none";
+  }
+}
+
+function getResult(guess){
+  return guess.split("").map((l,i)=>{
+    if(l===WORD[i]) return "correct";
+    if(WORD.includes(l)) return "present";
+    return "absent";
+  });
+}
+
+function submitGuess(){
+  if(current.length!==WLEN){
+    const row=document.getElementById(`row-${guesses.length}`);
+    row.style.animation="shake 0.4s ease";
+    setTimeout(()=>row.style.animation="none",500);
+    showToast(`Word must be ${WLEN} letters`);return;
+  }
+  const result=getResult(current);
+  const rowIdx=guesses.length;
+  guesses.push({guess:current,result});
+  revealRow(rowIdx,current,result);
+  current="";
+  const won=result.every(r=>r==="correct");
+  setTimeout(()=>{
+    updateKeyColors();
+    if(won){gameOver=true;setTimeout(()=>showModal(true),300);}
+    else if(guesses.length>=MAX){gameOver=true;setTimeout(()=>showModal(false),300);}
+  },WLEN*150+400);
+}
+
+function revealRow(rowIdx,guess,result){
+  for(let c=0;c<WLEN;c++){
+    const tile=document.getElementById(`tile-${rowIdx}-${c}`);
+    const delay=c*150;
+    setTimeout(()=>{
+      tile.style.animation=`flip 0.5s ease`;
+      setTimeout(()=>{
+        tile.style.background=colors[result[c]];
+        tile.style.border=`2px solid ${colors[result[c]]}`;
+        tile.textContent=guess[c];
+      },250);
+    },delay);
+  }
+}
+
+function updateKeyColors(){
+  const state={};
+  guesses.forEach(({guess,result})=>{
+    guess.split("").forEach((l,i)=>{
+      if(state[l]==="correct") return;
+      if(state[l]==="present"&&result[i]!=="correct") return;
+      state[l]=result[i];
+    });
+  });
+  Object.entries(state).forEach(([k,s])=>{
+    const btn=document.getElementById(`key-${k}`);
+    if(btn){btn.className=`key key-${s}`+(k==="ENTER"||k==="⌫"?" key-wide":"");}
+  });
+}
+
+function showToast(msg,dur=1800){
+  const t=document.getElementById("toast");
+  t.textContent=msg; t.classList.remove("hidden");
+  setTimeout(()=>t.classList.add("hidden"),dur);
+}
+
+function toggleHint(){
+  hintVisible=!hintVisible;
+  document.getElementById("hint-bar").classList.toggle("hidden",!hintVisible);
+}
+
+function showModal(won){
+  document.getElementById("modal-icon").textContent=won?"✝":"📖";
+  document.getElementById("modal-title").textContent=won?"Hallelujah!":"Keep Seeking";
+  document.getElementById("modal-word").textContent=WORD;
+  document.getElementById("modal-hint").textContent=DAILY.hint;
+  document.getElementById("stat-attempts").textContent=guesses.length;
+  document.getElementById("stat-points").textContent=won?Math.max(65-(guesses.length-1)*10,5):5;
+  document.getElementById("modal").classList.remove("hidden");
+}
+
+function closeModal(){document.getElementById("modal").classList.add("hidden");}
+
+init();
+</script>
+</body>
 </html>
