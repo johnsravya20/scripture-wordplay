@@ -15,38 +15,69 @@
     .title-domain{font-size:8px;color:#c9942a55;letter-spacing:2px;margin-top:1px;text-align:center}
     .icon-btn{background:none;border:none;font-size:20px;cursor:pointer;padding:4px}
     .header-icons{display:flex;gap:4px;align-items:center}
-    .user-avatar{width:28px;height:28px;border-radius:50%;border:1px solid #c9942a55;cursor:pointer;object-fit:cover}
     .user-initial{width:28px;height:28px;border-radius:50%;border:1px solid #c9942a55;background:#2a2a3e;color:#c9942a;font-size:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:'Cinzel',serif}
     .hint-bar{display:flex;align-items:center;gap:10px;background:#c9942a18;border:1px solid #c9942a44;border-radius:8px;padding:8px 16px;margin:8px 20px 0;max-width:480px;width:calc(100% - 40px);animation:fadeDown 0.3s ease}
     .hint-text{font-family:'IM Fell English',serif;font-style:italic;color:#e8dcc8;font-size:14px;text-align:center;flex:1}
     .toast{position:fixed;top:80px;left:50%;transform:translateX(-50%);background:#1e1e2e;border:1px solid #c9942a66;color:#e8dcc8;font-family:'IM Fell English',serif;font-size:15px;padding:10px 20px;border-radius:8px;z-index:300;animation:fadeDown 0.3s ease;white-space:nowrap}
-    .badge{font-size:10px;color:#c9942a88;letter-spacing:3px;text-transform:uppercase;margin:12px 0 8px}
-    .grid{display:flex;flex-direction:column;gap:6px;padding:4px 0 12px}
+    .badge{font-size:10px;color:#c9942a88;letter-spacing:3px;text-transform:uppercase;margin:12px 0 4px}
+    .mode-tag{font-size:9px;color:#4a7c5999;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;min-height:14px}
+
+    /* Always-visible verse + countdown bar */
+    .always-bar{max-width:480px;width:calc(100% - 40px);margin:0 0 10px}
+    .countdown-bar{display:flex;align-items:center;justify-content:center;gap:10px;background:#c9942a0d;border:1px solid #c9942a22;border-radius:8px;padding:8px 14px;margin-bottom:8px}
+    .countdown-label{font-family:'Cinzel',serif;font-size:9px;color:#c9942a88;letter-spacing:2px}
+    .countdown-timer{font-family:'Cinzel',serif;font-size:16px;color:#c9942a;letter-spacing:4px}
+    .verse-always{background:#0d1a0d;border:1px solid #c9942a22;border-radius:10px;padding:14px 16px}
+    .verse-always-label{font-size:8px;color:#c9942a66;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px}
+    .verse-always-text{font-family:'IM Fell English',serif;font-style:italic;color:#e8dcc888;font-size:13px;line-height:1.7;margin-bottom:4px}
+    .verse-always-ref{font-family:'Cinzel',serif;font-size:9px;color:#c9942a66;letter-spacing:2px;margin-bottom:8px}
+    .verse-always-commentary{font-family:'IM Fell English',serif;color:#e8dcc844;font-size:12px;line-height:1.6;border-top:1px solid #c9942a11;padding-top:8px}
+
+    .grid{display:flex;flex-direction:column;gap:6px;padding:4px 0 12px;transition:opacity 0.5s}
+    .grid.dimmed{opacity:0.2;pointer-events:none}
     .row{display:flex;gap:6px}
     .tile{display:flex;align-items:center;justify-content:center;font-weight:700;border-radius:6px;user-select:none;text-shadow:0 1px 3px #00000088;font-family:'Cinzel',serif}
-    .keyboard{display:flex;flex-direction:column;gap:6px;padding:0 8px}
+    .keyboard{display:flex;flex-direction:column;gap:6px;padding:0 8px;transition:opacity 0.4s}
+    .keyboard.dimmed{opacity:0.3;pointer-events:none}
     .kb-row{display:flex;gap:5px;justify-content:center}
     .key{height:46px;min-width:32px;padding:0 6px;border:1px solid #4a4a6a;border-radius:6px;cursor:pointer;font-family:'Cinzel',serif;font-weight:600;font-size:15px;background:#2a2a3e;color:#e8dcc8;transition:all 0.15s;user-select:none}
     .key-wide{min-width:52px;font-size:11px}
     .key-correct{background:#4a7c59!important;border-color:#4a7c59!important;color:#fff!important}
     .key-present{background:#c9942a!important;border-color:#c9942a!important;color:#fff!important}
     .key-absent{background:#3a3a4a!important;border-color:#3a3a4a!important;color:#fff!important}
+
+    /* Aftermath result card */
+    .aftermath{max-width:480px;width:calc(100% - 40px);animation:fadeDown 0.6s ease;margin-bottom:12px}
+    .aftermath-result{background:linear-gradient(135deg,#1a2a1a,#1a1a2e);border:1px solid #c9942a44;border-radius:14px;padding:22px 20px;text-align:center;margin-bottom:10px}
+    .aftermath-icon{font-size:44px;margin-bottom:8px}
+    .aftermath-word{font-family:'Cinzel',serif;font-size:34px;font-weight:700;color:#e8dcc8;letter-spacing:10px;margin-bottom:4px;text-shadow:0 0 30px #c9942a55}
+    .aftermath-subtext{font-family:'IM Fell English',serif;font-style:italic;color:#e8dcc899;font-size:14px;margin-bottom:16px}
+    .aftermath-stats{display:flex;justify-content:center;gap:28px}
+    .astat-num{font-family:'Cinzel',serif;font-size:30px;font-weight:700;color:#4a7c59}
+    .astat-num.gold{color:#c9942a}
+    .astat-label{font-family:'Cinzel',serif;font-size:9px;color:#e8dcc866;letter-spacing:2px;text-transform:uppercase}
+
+    /* Practice / action buttons */
+    .action-btn{display:flex;align-items:center;justify-content:center;gap:8px;border-radius:8px;font-family:'Cinzel',serif;font-size:12px;letter-spacing:2px;padding:11px 20px;cursor:pointer;width:100%;margin-bottom:8px;transition:all 0.2s;border:1px solid}
+    .btn-practice{background:transparent;border-color:#4a7c5966;color:#4a7c59}
+    .btn-practice:hover{background:#4a7c5922;border-color:#4a7c59}
+    .btn-donate{background:transparent;border-color:#c9942a55;color:#c9942a;text-decoration:none;display:flex}
+    .btn-donate:hover{background:#c9942a18}
+
+    /* Lockout panel */
+    .lockout-panel{max-width:480px;width:calc(100% - 40px);background:#2a0a0a;border:1px solid #aa333366;border-radius:14px;padding:22px 20px;text-align:center;margin-bottom:12px;animation:fadeDown 0.5s ease}
+    .lockout-icon{font-size:36px;margin-bottom:8px}
+    .lockout-title{font-family:'Cinzel',serif;font-size:16px;color:#cc5555;letter-spacing:3px;margin-bottom:8px}
+    .lockout-text{font-family:'IM Fell English',serif;font-style:italic;color:#e8dcc888;font-size:13px;line-height:1.6;margin-bottom:12px}
+    .lockout-countdown{font-family:'Cinzel',serif;font-size:22px;color:#cc5555;letter-spacing:4px}
+
+    /* Modals */
     .modal-overlay{position:fixed;inset:0;background:#00000088;display:flex;align-items:center;justify-content:center;z-index:200;backdrop-filter:blur(4px)}
     .modal{background:linear-gradient(135deg,#1a1a2e,#0d1a0d);border:1px solid #c9942a55;border-radius:16px;padding:32px 28px;max-width:360px;width:90%;text-align:center;position:relative;animation:modalIn 0.4s ease;box-shadow:0 20px 60px #00000099;max-height:90vh;overflow-y:auto}
     .modal-close{position:absolute;top:12px;right:14px;background:none;border:1px solid #e8dcc833;color:#e8dcc8;font-size:16px;cursor:pointer;padding:2px 8px;border-radius:4px}
     .modal-close:hover{background:#c9942a33}
     .modal-title{font-family:'Cinzel',serif;font-size:20px;font-weight:700;color:#c9942a;letter-spacing:3px;margin-bottom:16px}
-    .modal-word{font-family:'Cinzel',serif;font-size:30px;font-weight:700;color:#e8dcc8;letter-spacing:8px;margin-bottom:6px;text-shadow:0 0 20px #c9942a44}
-    .modal-stats{display:flex;justify-content:center;gap:32px;margin-bottom:20px}
-    .stat-num{font-family:'Cinzel',serif;font-size:28px;font-weight:700;color:#4a7c59}
-    .stat-label{font-family:'Cinzel',serif;font-size:10px;color:#e8dcc866;letter-spacing:2px;text-transform:uppercase}
-    .verse-reveal{background:#c9942a0d;border:1px solid #c9942a33;border-radius:10px;padding:14px;margin-top:12px;text-align:left}
-    .verse-reveal-label{font-size:8px;color:#c9942a99;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px}
-    .verse-reveal-text{font-family:'IM Fell English',serif;font-style:italic;color:#e8dcc8;font-size:13px;line-height:1.7;margin-bottom:4px}
-    .verse-reveal-ref{font-family:'Cinzel',serif;font-size:10px;color:#c9942a;letter-spacing:2px;margin-bottom:8px}
-    .verse-reveal-commentary{font-family:'IM Fell English',serif;color:#e8dcc877;font-size:12px;line-height:1.6;border-top:1px solid #c9942a22;padding-top:8px}
     .how-rule{display:flex;align-items:flex-start;gap:10px;margin-bottom:14px;text-align:left}
-    .how-rule-icon{font-size:20px;flex-shrink:0;margin-top:2px}
     .how-rule-text{font-family:'IM Fell English',serif;color:#e8dcc8;font-size:14px;line-height:1.6}
     .how-rule-text strong{font-family:'Cinzel',serif;font-size:12px;color:#c9942a;display:block;margin-bottom:2px}
     .tile-ex{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:4px;font-family:'Cinzel',serif;font-weight:700;font-size:14px;color:#fff;margin:0 2px}
@@ -57,12 +88,9 @@
     .google-btn{display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;border:none;border-radius:8px;color:#333;font-family:'Cinzel',serif;font-size:13px;font-weight:600;letter-spacing:1px;padding:12px 24px;cursor:pointer;width:100%;margin-top:8px;transition:all 0.2s;box-shadow:0 2px 8px #00000044}
     .google-btn:hover{background:#f5f5f5;transform:translateY(-1px)}
     .google-btn svg{width:20px;height:20px;flex-shrink:0}
-    .already-played{background:#4a7c5922;border:1px solid #4a7c5966;border-radius:10px;padding:16px;margin-top:12px}
-    .already-played-title{font-family:'Cinzel',serif;font-size:13px;color:#4a7c59;letter-spacing:2px;margin-bottom:6px}
-    .already-played-text{font-family:'IM Fell English',serif;font-style:italic;color:#e8dcc8;font-size:13px}
     .hidden{display:none}
     @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
-    @keyframes fadeDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fadeDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
     @keyframes modalIn{from{opacity:0;transform:scale(0.9) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
     @keyframes flip{0%{transform:rotateX(0)}50%{transform:rotateX(-90deg);opacity:0.4}100%{transform:rotateX(0)}}
     @keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.12)}100%{transform:scale(1)}}
@@ -92,7 +120,48 @@
 
   <div id="toast" class="toast hidden"></div>
   <div class="badge" id="badge"></div>
+  <div class="mode-tag" id="mode-tag"></div>
+
+  <!-- ALWAYS VISIBLE: verse + countdown -->
+  <div class="always-bar" id="always-bar">
+    <div class="countdown-bar">
+      <span class="countdown-label">NEXT PUZZLE IN</span>
+      <span class="countdown-timer" id="main-countdown">--:--:--</span>
+    </div>
+    <div class="verse-always">
+      <div class="verse-always-label">✝ Verse of the Day</div>
+      <div class="verse-always-text" id="verse-always-text"></div>
+      <div class="verse-always-ref" id="verse-always-ref"></div>
+      <div class="verse-always-commentary" id="verse-always-commentary"></div>
+    </div>
+  </div>
+
+  <!-- Grid -->
   <div class="grid" id="grid"></div>
+
+  <!-- Aftermath result card (hidden until game ends) -->
+  <div id="aftermath" class="aftermath hidden">
+    <div class="aftermath-result">
+      <div class="aftermath-icon" id="aft-icon"></div>
+      <div class="aftermath-word" id="aft-word"></div>
+      <div class="aftermath-subtext" id="aft-subtext"></div>
+      <div class="aftermath-stats">
+        <div><div class="astat-num" id="aft-attempts"></div><div class="astat-label">Attempts</div></div>
+        <div><div class="astat-num gold" id="aft-points"></div><div class="astat-label">Points</div></div>
+      </div>
+    </div>
+    <button class="action-btn btn-practice" id="practice-btn" onclick="tryStartPractice()">🎮 &nbsp; Play Practice Mode (Unlimited · No Score)</button>
+    <a class="action-btn btn-donate" href="https://www.buymeacoffee.com" target="_blank" id="donate-link">☕ &nbsp; If you had a meaningful time, consider supporting</a>
+  </div>
+
+  <!-- Lockout panel (hidden unless locked out) -->
+  <div id="lockout-panel" class="lockout-panel hidden">
+    <div class="lockout-icon">⏳</div>
+    <div class="lockout-title">PRACTICE LOCKED</div>
+    <div class="lockout-text">"Be still before the Lord and wait patiently for him." — Psalm 37:7<br><br>You've used all your practice attempts for now. Come back in:</div>
+    <div class="lockout-countdown" id="lockout-countdown">12:00:00</div>
+  </div>
+
   <div class="keyboard" id="keyboard"></div>
 
   <!-- LOGIN MODAL -->
@@ -100,12 +169,8 @@
     <div class="modal">
       <div style="font-size:40px;margin-bottom:12px">✝</div>
       <div class="modal-title">WELCOME</div>
-      <div style="font-family:'IM Fell English',serif;font-style:italic;color:#e8dcc8;font-size:14px;line-height:1.7;margin-bottom:20px">
-        Sign in with Google to play Scripture WordPlay, track your daily scores and join the leaderboard.
-      </div>
-      <div style="font-family:'IM Fell English',serif;font-style:italic;color:#c9942a88;font-size:12px;margin-bottom:16px">
-        "Your word is a lamp to my feet and a light to my path" — Psalm 119:105
-      </div>
+      <div style="font-family:'IM Fell English',serif;font-style:italic;color:#e8dcc8;font-size:14px;line-height:1.7;margin-bottom:20px">Sign in with Google to play Scripture WordPlay, track your daily scores and join the community.</div>
+      <div style="font-family:'IM Fell English',serif;font-style:italic;color:#c9942a88;font-size:12px;margin-bottom:16px">"Your word is a lamp to my feet and a light to my path" — Psalm 119:105</div>
       <button class="google-btn" onclick="signInWithGoogle()">
         <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
         Sign in with Google
@@ -119,99 +184,40 @@
       <button class="modal-close" onclick="closeHowToPlay()">✕</button>
       <div style="font-size:36px;margin-bottom:8px">📖</div>
       <div class="modal-title">HOW TO PLAY</div>
-      <div class="how-rule">
-        <div class="how-rule-icon">🎯</div>
-        <div class="how-rule-text"><strong>GUESS THE WORD</strong>Each guess must be a Biblical term, name, or place — 5 to 7 letters.</div>
-      </div>
-      <div class="how-rule">
-        <div class="how-rule-icon">🔄</div>
-        <div class="how-rule-text"><strong>6 ATTEMPTS</strong>You have 6 tries. One new word every day!</div>
-      </div>
-      <div class="how-rule">
-        <div class="how-rule-icon">🕯️</div>
-        <div class="how-rule-text"><strong>USE THE HINT</strong>Tap 🕯️ for a clue about today's word.</div>
-      </div>
-      <div class="how-rule">
-        <div class="how-rule-icon">📖</div>
-        <div class="how-rule-text"><strong>VERSE OF THE DAY</strong>A Bible verse and commentary is revealed after you finish playing.</div>
-      </div>
+      <div class="how-rule"><div style="font-size:20px;flex-shrink:0;margin-top:2px">🎯</div><div class="how-rule-text"><strong>GUESS THE WORD</strong>Each guess must be a Biblical term, name, or place — 5 to 7 letters.</div></div>
+      <div class="how-rule"><div style="font-size:20px;flex-shrink:0;margin-top:2px">🔄</div><div class="how-rule-text"><strong>6 ATTEMPTS</strong>You have 6 tries. One new word every day!</div></div>
+      <div class="how-rule"><div style="font-size:20px;flex-shrink:0;margin-top:2px">🕯️</div><div class="how-rule-text"><strong>USE THE HINT</strong>Tap 🕯️ for a clue about today's word.</div></div>
+      <div class="how-rule"><div style="font-size:20px;flex-shrink:0;margin-top:2px">🎮</div><div class="how-rule-text"><strong>PRACTICE MODE</strong>Up to 50 rounds after your daily game. Rounds 1–15 are normal (5–7 letters). Rounds 16–50 get harder (8–9 letters). Fail a round and wait 12 hours!</div></div>
+      <div class="how-rule"><div style="font-size:20px;flex-shrink:0;margin-top:2px">📖</div><div class="how-rule-text"><strong>VERSE OF THE DAY</strong>Bible verse and commentary shown throughout the day. Full reveal after you finish.</div></div>
       <div style="border-top:1px solid #c9942a22;margin:14px 0;padding-top:14px">
         <div style="font-family:'Cinzel',serif;font-size:11px;color:#c9942a;letter-spacing:2px;margin-bottom:10px">TILE COLOURS</div>
-        <div class="ex-row">
-          <div class="tile-ex" style="background:#4a7c59">D</div>
-          <div class="tile-ex" style="background:#3a3a4a">A</div>
-          <div class="tile-ex" style="background:#3a3a4a">V</div>
-          <div class="tile-ex" style="background:#3a3a4a">I</div>
-          <div class="tile-ex" style="background:#3a3a4a">D</div>
-        </div>
+        <div class="ex-row"><div class="tile-ex" style="background:#4a7c59">D</div><div class="tile-ex" style="background:#3a3a4a">A</div><div class="tile-ex" style="background:#3a3a4a">V</div><div class="tile-ex" style="background:#3a3a4a">I</div><div class="tile-ex" style="background:#3a3a4a">D</div></div>
         <div class="ex-label">🟢 Green — correct letter, correct position</div>
-        <div class="ex-row">
-          <div class="tile-ex" style="background:#3a3a4a">G</div>
-          <div class="tile-ex" style="background:#c9942a">R</div>
-          <div class="tile-ex" style="background:#3a3a4a">A</div>
-          <div class="tile-ex" style="background:#3a3a4a">C</div>
-          <div class="tile-ex" style="background:#3a3a4a">E</div>
-        </div>
+        <div class="ex-row"><div class="tile-ex" style="background:#3a3a4a">G</div><div class="tile-ex" style="background:#c9942a">R</div><div class="tile-ex" style="background:#3a3a4a">A</div><div class="tile-ex" style="background:#3a3a4a">C</div><div class="tile-ex" style="background:#3a3a4a">E</div></div>
         <div class="ex-label">🟡 Gold — correct letter, wrong position</div>
-        <div class="ex-row">
-          <div class="tile-ex" style="background:#3a3a4a">F</div>
-          <div class="tile-ex" style="background:#3a3a4a">A</div>
-          <div class="tile-ex" style="background:#3a3a4a">I</div>
-          <div class="tile-ex" style="background:#3a3a4a">T</div>
-          <div class="tile-ex" style="background:#3a3a4a">H</div>
-        </div>
+        <div class="ex-row"><div class="tile-ex" style="background:#3a3a4a">F</div><div class="tile-ex" style="background:#3a3a4a">A</div><div class="tile-ex" style="background:#3a3a4a">I</div><div class="tile-ex" style="background:#3a3a4a">T</div><div class="tile-ex" style="background:#3a3a4a">H</div></div>
         <div class="ex-label">⬛ Dark — letter not in the word</div>
       </div>
-      <div style="font-family:'IM Fell English',serif;font-style:italic;color:#c9942a88;font-size:11px;margin-bottom:14px">
-        Max 65 pts · Lose 10 pts per extra attempt · +5 pts for playing
-      </div>
+      <div style="font-family:'IM Fell English',serif;font-style:italic;color:#c9942a88;font-size:11px;margin-bottom:14px">Max 65 pts · Lose 10 pts per extra attempt · +5 pts for playing</div>
       <button class="play-btn" onclick="closeHowToPlay()">✝ &nbsp; LET'S PLAY</button>
-    </div>
-  </div>
-
-  <!-- RESULT MODAL -->
-  <div id="result-modal" class="modal-overlay hidden">
-    <div class="modal">
-      <button class="modal-close" onclick="closeResultModal()">✕</button>
-      <div id="modal-icon" style="font-size:40px;margin-bottom:8px"></div>
-      <div class="modal-title" id="modal-title"></div>
-      <div class="modal-word" id="modal-word"></div>
-      <div style="font-family:'IM Fell English',serif;font-style:italic;color:#e8dcc899;font-size:14px;margin-bottom:16px" id="modal-hint-text"></div>
-      <div class="modal-stats">
-        <div><div class="stat-num" id="stat-attempts"></div><div class="stat-label">ATTEMPTS</div></div>
-        <div><div class="stat-num" id="stat-points" style="color:#c9942a"></div><div class="stat-label">POINTS</div></div>
-      </div>
-      <!-- Verse revealed after game -->
-      <div class="verse-reveal">
-        <div class="verse-reveal-label">✝ Verse of the Day</div>
-        <div class="verse-reveal-text" id="result-verse-text"></div>
-        <div class="verse-reveal-ref" id="result-verse-ref"></div>
-        <div class="verse-reveal-commentary" id="result-verse-commentary"></div>
-      </div>
     </div>
   </div>
 
   <!-- ALREADY PLAYED MODAL -->
   <div id="played-modal" class="modal-overlay hidden">
     <div class="modal">
-      <div style="font-size:40px;margin-bottom:12px">✝</div>
+      <button class="modal-close" onclick="closePlayedModal()">✕</button>
+      <div style="font-size:36px;margin-bottom:12px">✝</div>
       <div class="modal-title">ALREADY PLAYED</div>
-      <div class="already-played">
-        <div class="already-played-title">TODAY'S RESULT</div>
-        <div class="already-played-text" id="played-summary"></div>
+      <div style="background:#4a7c5922;border:1px solid #4a7c5966;border-radius:10px;padding:14px;margin-bottom:16px">
+        <div style="font-family:'Cinzel',serif;font-size:11px;color:#4a7c59;letter-spacing:2px;margin-bottom:6px">TODAY'S RESULT</div>
+        <div style="font-family:'IM Fell English',serif;font-style:italic;color:#e8dcc8;font-size:13px" id="played-summary"></div>
       </div>
-      <div class="verse-reveal" style="margin-top:16px">
-        <div class="verse-reveal-label">✝ Verse of the Day</div>
-        <div class="verse-reveal-text" id="played-verse-text"></div>
-        <div class="verse-reveal-ref" id="played-verse-ref"></div>
-        <div class="verse-reveal-commentary" id="played-verse-commentary"></div>
-      </div>
-      <div style="font-family:'IM Fell English',serif;font-style:italic;color:#e8dcc866;font-size:12px;margin-top:16px">Come back tomorrow for a new word! 🙏</div>
+      <button class="play-btn" style="background:linear-gradient(135deg,#2a3a4a,#1a2a2a)" onclick="closePlayedModal();tryStartPractice()">🎮 &nbsp; Play Practice Mode</button>
     </div>
   </div>
 </div>
 
-<!-- Firebase -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
 import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-auth.js";
@@ -225,141 +231,219 @@ const firebaseConfig = {
   messagingSenderId: "755057394824",
   appId: "1:755057394824:web:28fd9316f263d6ff850b3d"
 };
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const provider = new GoogleAuthProvider();
 
-// ── WORD LIST ────────────────────────────────────────────────────────────────
-const WORDS = [
+// ── WORD LISTS ────────────────────────────────────────────────────────────────
+const EASY_WORDS = [
   {word:"MOSES",hint:"Led Israel out of Egypt",verse:"By faith Moses left Egypt, not fearing the king's anger.",ref:"Hebrews 11:27",commentary:"Moses chose obedience to God over the comfort of a palace — a picture of faith that costs something."},
-  {word:"DAVID",hint:"Slew Goliath, became King",verse:"The Lord does not look at the outward appearance, but the Lord looks at the heart.",ref:"1 Samuel 16:7",commentary:"God chose David not for his size or status but for his heart — character matters more than credentials."},
+  {word:"DAVID",hint:"Slew Goliath, became King",verse:"The Lord looks not at the outward appearance, but at the heart.",ref:"1 Samuel 16:7",commentary:"God chose David not for his size or status but for his heart — character matters more than credentials."},
   {word:"GRACE",hint:"Unmerited divine favour",verse:"For it is by grace you have been saved, through faith — it is the gift of God.",ref:"Ephesians 2:8",commentary:"Grace is not earned or deserved. It is God's free gift, given not because of who we are but because of who He is."},
   {word:"FAITH",hint:"Confidence in what we hope for",verse:"Now faith is confidence in what we hope for and assurance about what we do not see.",ref:"Hebrews 11:1",commentary:"Faith is not a leap in the dark — it is trust grounded in the character and promises of God."},
   {word:"ANGEL",hint:"Heavenly messenger",verse:"For he will command his angels concerning you to guard you in all your ways.",ref:"Psalm 91:11",commentary:"Angels are God's servants, sent to minister to His people. Their care reflects God's personal and protective love."},
   {word:"PSALM",hint:"Sacred song or hymn",verse:"Sing to the Lord a new song; sing to the Lord, all the earth.",ref:"Psalm 96:1",commentary:"The Psalms teach us that all of life — joy, grief, doubt, praise — can be brought honestly before God in worship."},
-  {word:"ELIJAH",hint:"Prophet taken to heaven in a chariot",verse:"The prayer of a righteous person is powerful and effective. Elijah was a human being, even as we are.",ref:"James 5:16-17",commentary:"Elijah's power came not from personal greatness but from persistent prayer. God uses ordinary people."},
-  {word:"GOSPEL",hint:"Good news of salvation",verse:"I am not ashamed of the gospel, because it is the power of God that brings salvation to everyone who believes.",ref:"Romans 1:16",commentary:"The Gospel is not good advice — it is good news. It announces what God has done in Christ."},
-  {word:"TEMPLE",hint:"House of God in Jerusalem",verse:"Do you not know that your bodies are temples of the Holy Spirit, who is in you?",ref:"1 Corinthians 6:19",commentary:"The Temple pointed to something greater — that God would dwell not in buildings but in the hearts of His people."},
-  {word:"SAMSON",hint:"Judge known for great strength",verse:"But he did not know that the Lord had left him.",ref:"Judges 16:20",commentary:"Samson's story is a warning: strength and gifts mean nothing without continued dependence on God."},
+  {word:"ELIJAH",hint:"Prophet taken to heaven in a chariot",verse:"The prayer of a righteous person is powerful and effective.",ref:"James 5:16",commentary:"Elijah's power came not from personal greatness but from persistent prayer. God uses ordinary people."},
+  {word:"GOSPEL",hint:"Good news of salvation",verse:"I am not ashamed of the gospel — it is the power of God that brings salvation to everyone who believes.",ref:"Romans 1:16",commentary:"The Gospel is not good advice — it is good news. It announces what God has done in Christ."},
+  {word:"TEMPLE",hint:"House of God in Jerusalem",verse:"Do you not know that your bodies are temples of the Holy Spirit?",ref:"1 Corinthians 6:19",commentary:"The Temple pointed to something greater — that God would dwell not in buildings but in the hearts of His people."},
   {word:"ESTHER",hint:"Queen who saved her people",verse:"Who knows but that you have come to your royal position for such a time as this?",ref:"Esther 4:14",commentary:"God places His people in specific situations for specific purposes. Courage is required to fulfil them."},
   {word:"JOSEPH",hint:"Dreamer sold by his brothers",verse:"You intended to harm me, but God intended it for good.",ref:"Genesis 50:20",commentary:"Joseph's life testifies to God's sovereignty — turning betrayal and suffering into redemption and blessing."},
   {word:"DANIEL",hint:"Survived the lion's den",verse:"My God sent his angel, and he shut the mouths of the lions.",ref:"Daniel 6:22",commentary:"Daniel's faithfulness under pressure shows that obedience to God is worth any cost."},
-  {word:"PRAYER",hint:"Communion with God",verse:"Do not be anxious about anything, but in every situation, by prayer and petition, present your requests to God.",ref:"Philippians 4:6",commentary:"Prayer is not a last resort — it is a first response. We exchange our anxiety for God's peace."},
-  {word:"ISAIAH",hint:"Prophet who foretold the Messiah",verse:"For to us a child is born, to us a son is given.",ref:"Isaiah 9:6",commentary:"Isaiah wrote 700 years before Christ, yet described His coming clearly — testifying to the reliability of God's word."},
-  {word:"EXODUS",hint:"Second book of the Bible",verse:"I am the Lord your God, who brought you out of Egypt, out of the land of slavery.",ref:"Exodus 20:2",commentary:"The Exodus is God's defining act of rescue in the Old Testament — a picture of the greater deliverance through Christ."},
-  {word:"CANAAN",hint:"The Promised Land",verse:"I have come down to bring them into a good and spacious land, a land flowing with milk and honey.",ref:"Exodus 3:8",commentary:"Canaan represents God's faithfulness. Every step toward it required trust that God would do what He promised."},
-  {word:"ROMANS",hint:"Epistle by Paul",verse:"Since we have been justified through faith, we have peace with God through our Lord Jesus Christ.",ref:"Romans 5:1",commentary:"Romans shows that peace with God comes only through justification by faith — the most complete Gospel presentation ever written."},
+  {word:"PRAYER",hint:"Communion with God",verse:"Do not be anxious about anything, but in every situation present your requests to God.",ref:"Philippians 4:6",commentary:"Prayer is not a last resort — it is a first response. We exchange our anxiety for God's peace."},
+  {word:"ISAIAH",hint:"Prophet who foretold the Messiah",verse:"For to us a child is born, to us a son is given.",ref:"Isaiah 9:6",commentary:"Isaiah wrote 700 years before Christ, yet described His coming clearly — testifying to God's word."},
+  {word:"EXODUS",hint:"Second book of the Bible",verse:"I am the Lord your God, who brought you out of Egypt, out of the land of slavery.",ref:"Exodus 20:2",commentary:"The Exodus is God's defining act of rescue — a picture of the greater deliverance through Christ."},
+  {word:"ROMANS",hint:"Epistle by Paul",verse:"Since we have been justified through faith, we have peace with God through our Lord Jesus Christ.",ref:"Romans 5:1",commentary:"Romans shows that peace with God comes only through justification by faith."},
   {word:"THRONE",hint:"God's seat of glory",verse:"Heaven is my throne, and the earth is my footstool.",ref:"Isaiah 66:1",commentary:"God's throne speaks not of distant power but present sovereignty. Nothing escapes His rule."},
-  {word:"SPIRIT",hint:"The Holy ______",verse:"The Advocate, the Holy Spirit, whom the Father will send in my name, will teach you all things.",ref:"John 14:26",commentary:"The Holy Spirit is not a force but a Person — the living presence of God within every believer."},
-  {word:"PETER",hint:"The rock on whom the church was built",verse:"You are Peter, and on this rock I will build my church, and the gates of Hades will not overcome it.",ref:"Matthew 16:18",commentary:"Peter's story is one of failure and restoration. God does not discard those who fall — He restores them."},
-  {word:"JACOB",hint:"Wrestled with God, renamed Israel",verse:"Your name will no longer be Jacob, but Israel, because you have struggled with God and overcome.",ref:"Genesis 32:28",commentary:"Jacob's wrestling shows that honest engagement with God — even in struggle — leads to blessing and transformation."},
+  {word:"SPIRIT",hint:"The Holy ______",verse:"The Advocate, the Holy Spirit, will teach you all things.",ref:"John 14:26",commentary:"The Holy Spirit is not a force but a Person — the living presence of God within every believer."},
+  {word:"PETER",hint:"Apostle who walked on water",verse:"You are Peter, and on this rock I will build my church.",ref:"Matthew 16:18",commentary:"Peter's story is one of failure and restoration. God does not discard those who fall — He restores them."},
+  {word:"JACOB",hint:"Wrestled with God, renamed Israel",verse:"Your name will no longer be Jacob, but Israel — you have struggled with God and overcome.",ref:"Genesis 32:28",commentary:"Jacob's wrestling shows that honest engagement with God — even in struggle — leads to blessing."},
   {word:"SARAH",hint:"Wife of Abraham, mother of Isaac",verse:"Is anything too hard for the Lord?",ref:"Genesis 18:14",commentary:"Sarah laughed at God's promise — and God kept it anyway. His plans are not limited by our doubts."},
-  {word:"ISAAC",hint:"Son of promise to Abraham",verse:"Abraham reasoned that God could even raise the dead, and so he did receive Isaac back.",ref:"Hebrews 11:19",commentary:"Isaac's near-sacrifice foreshadowed Christ's actual sacrifice — a son given up, then received back, pointing to resurrection."},
-  {word:"MIRIAM",hint:"Sister of Moses, led women in song",verse:"Sing to the Lord, for he is highly exalted.",ref:"Exodus 15:21",commentary:"Miriam led worship after crossing the sea — praise is always the right response to God's mighty deliverance."},
-  {word:"JOSHUA",hint:"Led Israel into the Promised Land",verse:"Be strong and courageous. Do not be afraid; the Lord your God will be with you wherever you go.",ref:"Joshua 1:9",commentary:"God's command was based not on Joshua's ability but on God's presence. Courage flows from knowing who goes with us."},
-  {word:"GIDEON",hint:"Judge who defeated Midian with 300 men",verse:"Go in the strength you have... Am I not sending you?",ref:"Judges 6:14",commentary:"Gideon felt unqualified — and God used him anyway. The question is never our strength but whether God has sent us."},
-  {word:"NAOMI",hint:"Ruth's mother-in-law",verse:"Where you go I will go, your people will be my people and your God my God.",ref:"Ruth 1:16",commentary:"Naomi's faithfulness, even in bitterness, inspired a loyalty in Ruth that became part of the lineage of Christ."},
-  {word:"PARABLE",hint:"A story with a spiritual lesson",verse:"He did not say anything to them without using a parable.",ref:"Matthew 13:34",commentary:"Jesus used parables to reveal truth to open hearts — stories that invite rather than demand."},
-  {word:"SERMON",hint:"A religious address or discourse",verse:"Blessed are the poor in spirit, for theirs is the kingdom of heaven.",ref:"Matthew 5:3",commentary:"The Sermon on the Mount begins with an upside-down kingdom — where the humble are exalted and the broken find blessing."},
-  {word:"BAPTISM",hint:"Sacrament of initiation by water",verse:"We were buried with him through baptism into death in order that we might live a new life.",ref:"Romans 6:4",commentary:"Baptism pictures dying to the old life and rising in the new life that only Christ can give."},
-  {word:"HEAVEN",hint:"Eternal dwelling place of God",verse:"He will wipe every tear from their eyes. There will be no more death or mourning or crying or pain.",ref:"Revelation 21:4",commentary:"Heaven is the full presence of God — where every wound is healed and every sorrow ended forever."},
+  {word:"JOSHUA",hint:"Led Israel into the Promised Land",verse:"Be strong and courageous. The Lord your God will be with you wherever you go.",ref:"Joshua 1:9",commentary:"God's command was based not on Joshua's ability but on God's presence. Courage flows from knowing who goes with us."},
+  {word:"GIDEON",hint:"Defeated Midian with just 300 men",verse:"Go in the strength you have — am I not sending you?",ref:"Judges 6:14",commentary:"Gideon felt unqualified — and God used him anyway. The question is never our strength but whether God has sent us."},
+  {word:"NAOMI",hint:"Ruth's faithful mother-in-law",verse:"Where you go I will go, your people will be my people and your God my God.",ref:"Ruth 1:16",commentary:"Naomi's faithfulness, even in bitterness, inspired a loyalty in Ruth that became part of the lineage of Christ."},
+  {word:"SAMSON",hint:"Judge of Israel with great strength",verse:"But he did not know that the Lord had left him.",ref:"Judges 16:20",commentary:"Samson's story warns us: gifts and strength mean nothing without continued dependence on God."},
+  {word:"HEAVEN",hint:"Eternal dwelling place of God",verse:"He will wipe every tear from their eyes. There will be no more death or mourning.",ref:"Revelation 21:4",commentary:"Heaven is the full presence of God — where every wound is healed and every sorrow ended forever."},
+  {word:"CANAAN",hint:"The Promised Land",verse:"I have come to bring them into a good and spacious land, flowing with milk and honey.",ref:"Exodus 3:8",commentary:"Canaan represents God's faithfulness to His promises. Every step required trust in God."},
+  {word:"SERMON",hint:"A message delivered to a congregation",verse:"Blessed are the poor in spirit, for theirs is the kingdom of heaven.",ref:"Matthew 5:3",commentary:"The Sermon on the Mount begins with an upside-down kingdom — where the humble are exalted."},
+  {word:"MIRIAM",hint:"Sister of Moses who led worship",verse:"Sing to the Lord, for he is highly exalted.",ref:"Exodus 15:21",commentary:"Miriam led worship after crossing the sea — praise is always the right response to God's deliverance."},
+  {word:"PARABLE",hint:"A story with a hidden spiritual truth",verse:"He did not say anything to them without using a parable.",ref:"Matthew 13:34",commentary:"Jesus used parables to reveal truth to open hearts — stories that invite rather than demand."},
 ];
 
-// ── PUZZLE NUMBER (starts from June 1, 2026 = Puzzle #1) ──────────────────
+const HARD_WORDS = [
+  {word:"EPHESIANS",hint:"Paul's letter about the armour of God — 9 letters",verse:"Put on the full armour of God, so that you can take your stand against the devil's schemes.",ref:"Ephesians 6:11",commentary:"Paul's letter to Ephesus is a masterpiece on the church, grace and spiritual warfare. The armour metaphor reminds us that the Christian life requires active, daily preparation."},
+  {word:"COVENANT",hint:"A binding agreement between God and His people — 8 letters",verse:"I will establish my covenant as an everlasting covenant between me and you.",ref:"Genesis 17:7",commentary:"Covenant is the backbone of the entire Bible. God's covenants are not contracts but promises — bound by His character, not ours."},
+  {word:"PROVERBS",hint:"Biblical book of wisdom — 8 letters",verse:"Trust in the Lord with all your heart and lean not on your own understanding.",ref:"Proverbs 3:5",commentary:"Proverbs teaches that true wisdom begins not with knowledge but with reverence for God — the fear of the Lord is where all understanding starts."},
+  {word:"NEHEMIAH",hint:"He rebuilt Jerusalem's walls — 8 letters",verse:"So we rebuilt the wall till all of it reached half its height, for the people worked with all their heart.",ref:"Nehemiah 4:6",commentary:"Nehemiah combined fervent prayer with fearless action. His story shows that faithfulness means rolling up your sleeves, not just bowing your knees."},
+  {word:"HABAKKUK",hint:"Prophet who questioned God boldly — 8 letters",verse:"The righteous person will live by his faithfulness.",ref:"Habakkuk 2:4",commentary:"Habakkuk dared to ask God hard questions — and God answered. This prophet teaches us that honest wrestling with God is not faithlessness but faith."},
+  {word:"GALATIANS",hint:"Paul's letter on Christian freedom — 9 letters",verse:"It is for freedom that Christ has set us free.",ref:"Galatians 5:1",commentary:"Galatians is Paul's sharpest letter — a passionate defence of grace against works-based religion. Freedom in Christ is not licence but life."},
+  {word:"PHILEMON",hint:"Paul's letter about a runaway slave — 8 letters",verse:"Perhaps the reason he was separated from you for a little while was that you might have him back forever.",ref:"Philemon 1:15",commentary:"This short letter is one of the Bible's most radical social documents — Paul urges Philemon to receive Onesimus not as a slave but as a beloved brother."},
+  {word:"JEREMIAH",hint:"The weeping prophet of Israel — 8 letters",verse:"For I know the plans I have for you — plans to prosper you and not to harm you.",ref:"Jeremiah 29:11",commentary:"Jeremiah wept over Jerusalem and suffered deeply for his calling. Yet through all his anguish, he trusted God's sovereign purposes for His people."},
+  {word:"ZACCHAEUS",hint:"Short tax collector who climbed a tree — 9 letters",verse:"The Son of Man came to seek and to save the lost.",ref:"Luke 19:10",commentary:"Zacchaeus was despised by his community — yet Jesus chose to dine with him. This story captures the Gospel in miniature: Jesus seeks those the world overlooks."},
+  {word:"CORNELIUS",hint:"First Gentile convert in Acts — 9 letters",verse:"I now realise how true it is that God does not show favouritism.",ref:"Acts 10:34",commentary:"The conversion of Cornelius was a turning point in church history — God's grace was never limited to one people. The Gospel is for all nations."},
+  {word:"OBADIAH",hint:"Shortest prophetic book in the Bible — 7 letters",verse:"The day of the Lord is near for all nations.",ref:"Obadiah 1:15",commentary:"Obadiah's brief prophecy carries a powerful theme: pride goes before a fall, and God's justice reaches every nation, not just Israel."},
+  {word:"SANCTIFY",hint:"To set apart as holy — 8 letters",verse:"Sanctify them by the truth; your word is truth.",ref:"John 17:17",commentary:"Sanctification is the lifelong process of being made more like Christ. Jesus prayed for it, the Spirit enables it, and God's word guides it."},
+  {word:"TRIBULATION",hint:"Great suffering and trial — 11 letters... try TRIAL instead",verse:"In this world you will have trouble. But take heart! I have overcome the world.",ref:"John 16:33",commentary:"Jesus does not promise His followers a life free of hardship — He promises His presence through it. Overcoming begins with knowing He has already overcome."},
+  {word:"ATONEMENT",hint:"Making amends for sin through sacrifice — 9 letters",verse:"For the life of a creature is in the blood, and I have given it to you to make atonement.",ref:"Leviticus 17:11",commentary:"Atonement is at the heart of the Bible's story — the cost of sin is death, but God in His mercy provided a substitute. Christ is the final and perfect atonement."},
+  {word:"SCRIPTURE",hint:"The sacred writings of the Bible — 9 letters",verse:"All Scripture is God-breathed and is useful for teaching, rebuking, correcting and training in righteousness.",ref:"2 Timothy 3:16",commentary:"The Bible is not merely a human document — it is God-breathed. Every word was written by human hands guided by the Holy Spirit."},
+  {word:"NAZARETH",hint:"The town where Jesus grew up — 8 letters",verse:"Can anything good come from Nazareth?",ref:"John 1:46",commentary:"Nazareth was small and overlooked — yet God chose it. This is His pattern: choosing the weak, the small and the despised to shame the strong."},
+  {word:"BETHLEHEM",hint:"City of David, birthplace of Jesus — 9 letters",verse:"But you, Bethlehem, though you are small among the clans of Judah, out of you will come a ruler.",ref:"Micah 5:2",commentary:"Bethlehem was prophesied centuries before Christ's birth. God's precision in fulfilling Scripture is one of the strongest evidences of His sovereignty."},
+  {word:"JERUSALEM",hint:"The holy city, city of David — 9 letters",verse:"Pray for the peace of Jerusalem: may those who love you be secure.",ref:"Psalm 122:6",commentary:"Jerusalem stands at the centre of redemptive history — the city of David, the place of the crucifixion, and the destination of the returning King."},
+  {word:"PHILIPPI",hint:"City where Paul was imprisoned and sang — 8 letters",verse:"Rejoice in the Lord always. I will say it again: Rejoice!",ref:"Philippians 4:4",commentary:"Paul wrote Philippians from prison — yet it is the most joyful letter in the New Testament. Joy in Christ is not dependent on circumstances."},
+  {word:"MACEDONIA",hint:"Region Paul was called to in a vision — 9 letters",verse:"Come over to Macedonia and help us.",ref:"Acts 16:9",commentary:"The Macedonian call is a model of Spirit-led mission — Paul did not plan it, but obeyed it. The Gospel reached Europe because someone listened."},
+];
+
+// ── PUZZLE NUMBER ────────────────────────────────────────────────────────────
 const START_DATE = new Date('2026-06-01T00:00:00Z');
 const diffDays = Math.floor((Date.now() - START_DATE) / 86400000);
-const PUZZLE_NUM = (((diffDays % WORDS.length) + WORDS.length) % WORDS.length);
-const TODAY_KEY = new Date().toISOString().slice(0,10); // YYYY-MM-DD
-const DAILY = WORDS[PUZZLE_NUM];
-const WORD = DAILY.word;
-const WLEN = WORD.length;
-const MAX = 6;
+const PUZZLE_NUM = (((diffDays % EASY_WORDS.length) + EASY_WORDS.length) % EASY_WORDS.length);
+const TODAY_KEY = new Date().toISOString().slice(0,10);
+const DAILY = EASY_WORDS[PUZZLE_NUM];
 
+// ── STATE ─────────────────────────────────────────────────────────────────────
+let WORD=DAILY.word, WLEN=DAILY.word.length, CURRENT_DATA=DAILY;
 let guesses=[], current="", gameOver=false, hintVisible=false, currentUser=null;
-
+let practiceMode=false, practiceRound=0;
+const MAX=6, MAX_PRACTICE=50, LOCKOUT_MS=12*60*60*1000;
 const KB_ROWS=[["Q","W","E","R","T","Y","U","I","O","P"],["A","S","D","F","G","H","J","K","L"],["ENTER","Z","X","C","V","B","N","M","⌫"]];
-const colors={correct:"#4a7c59",present:"#c9942a",absent:"#3a3a4a"};
+const clrs={correct:"#4a7c59",present:"#c9942a",absent:"#3a3a4a"};
+
+// ── PRACTICE STORAGE ──────────────────────────────────────────────────────────
+function getPracticeState(){
+  const raw=localStorage.getItem('swp-practice');
+  if(!raw) return {date:'',rounds:0,lockoutUntil:0};
+  return JSON.parse(raw);
+}
+function savePracticeState(s){ localStorage.setItem('swp-practice',JSON.stringify(s)); }
+
+function checkPracticeLockout(){
+  let s=getPracticeState();
+  if(s.date!==TODAY_KEY){ s={date:TODAY_KEY,rounds:0,lockoutUntil:0}; savePracticeState(s); }
+  return s;
+}
 
 // ── AUTH ─────────────────────────────────────────────────────────────────────
-window.signInWithGoogle = async () => {
-  try { await signInWithPopup(auth, provider); }
+window.signInWithGoogle=async()=>{
+  try{ await signInWithPopup(auth,provider); }
   catch(e){ showToast("Sign in failed. Please try again."); }
 };
 
-onAuthStateChanged(auth, async user => {
+onAuthStateChanged(auth,async user=>{
   if(user){
-    currentUser = user;
+    currentUser=user;
     document.getElementById("login-modal").classList.add("hidden");
     renderUserArea(user);
-    await checkAlreadyPlayed(user);
-    initGame();
+    const played=await checkAlreadyPlayed(user);
+    if(!played) initGame();
   } else {
-    currentUser = null;
+    currentUser=null;
     document.getElementById("login-modal").classList.remove("hidden");
     renderUserArea(null);
   }
 });
 
 function renderUserArea(user){
-  const area = document.getElementById("user-area");
-  if(user){
-    area.innerHTML = `<div class="user-initial" title="${user.displayName}\n${user.email}" onclick="handleSignOut()">${user.displayName?user.displayName[0].toUpperCase():'U'}</div>`;
-  } else {
-    area.innerHTML = '';
-  }
+  const a=document.getElementById("user-area");
+  a.innerHTML=user?`<div class="user-initial" title="Signed in as ${user.displayName}" onclick="handleSignOut()">${user.displayName?user.displayName[0].toUpperCase():'U'}</div>`:'';
 }
-
-window.handleSignOut = async () => {
-  if(confirm("Sign out?")) await signOut(auth);
-};
+window.handleSignOut=async()=>{ if(confirm("Sign out?")) await signOut(auth); };
 
 async function checkAlreadyPlayed(user){
-  const ref = doc(db, "scores", `${user.uid}_${TODAY_KEY}`);
-  const snap = await getDoc(ref);
+  const ref=doc(db,"scores",`${user.uid}_${TODAY_KEY}`);
+  const snap=await getDoc(ref);
   if(snap.exists()){
-    const data = snap.data();
-    // Show already played modal
-    document.getElementById("played-summary").textContent =
-      data.won ? `✅ You guessed "${WORD}" in ${data.attempts} attempt${data.attempts>1?'s':''}! You earned ${data.points} points.`
-               : `❌ Today's word was "${WORD}". You earned 5 participation points.`;
-    document.getElementById("played-verse-text").textContent = `"${DAILY.verse}"`;
-    document.getElementById("played-verse-ref").textContent = `— ${DAILY.ref}`;
-    document.getElementById("played-verse-commentary").textContent = DAILY.commentary;
+    const d=snap.data();
+    document.getElementById("played-summary").textContent=
+      d.won?`✅ You guessed "${WORD}" in ${d.attempts} attempt${d.attempts>1?'s':''}! You earned ${d.points} points. Come back tomorrow!`
+           :`❌ Today's word was "${WORD}". You earned 5 participation points. Come back tomorrow!`;
     document.getElementById("played-modal").classList.remove("hidden");
-    gameOver = true;
+    gameOver=true;
+    initGame();
+    showAftermath(d.won,d.attempts,d.points);
+    return true;
   }
+  return false;
 }
 
-async function saveScore(won, attempts, points){
-  if(!currentUser) return;
-  const ref = doc(db, "scores", `${currentUser.uid}_${TODAY_KEY}`);
-  await setDoc(ref, {
-    uid: currentUser.uid,
-    name: currentUser.displayName || "Anonymous",
-    email: currentUser.email,
-    date: TODAY_KEY,
-    puzzleNum: PUZZLE_NUM + 1,
-    word: WORD,
-    won, attempts, points,
-    timestamp: Date.now()
+async function saveScore(won,attempts,points){
+  if(!currentUser||practiceMode) return;
+  await setDoc(doc(db,"scores",`${currentUser.uid}_${TODAY_KEY}`),{
+    uid:currentUser.uid, name:currentUser.displayName||"Anonymous",
+    email:currentUser.email, date:TODAY_KEY, puzzleNum:PUZZLE_NUM+1,
+    word:WORD, won, attempts, points, timestamp:Date.now()
   });
 }
 
-// ── GAME ─────────────────────────────────────────────────────────────────────
+// ── GAME INIT ────────────────────────────────────────────────────────────────
 function initGame(){
-  document.getElementById("hint-text").textContent = DAILY.hint;
-  document.getElementById("badge").textContent = `${WLEN}-letter Biblical term • Puzzle #${PUZZLE_NUM+1}`;
+  document.getElementById("hint-text").textContent=CURRENT_DATA.hint;
+  document.getElementById("badge").textContent=practiceMode
+    ?`${WLEN}-letter Biblical term • Practice Round ${practiceRound}`
+    :`${WLEN}-letter Biblical term • Puzzle #${PUZZLE_NUM+1}`;
+  document.getElementById("mode-tag").textContent=practiceMode
+    ?(practiceRound>15?"🔥 Advanced Practice — No Score":"🎮 Practice Mode — No Score"):"";
   buildGrid(); buildKeyboard();
-  document.addEventListener("keydown", e => handleKey(e.key.toUpperCase()));
-  const seen = localStorage.getItem('swp-seen-howto');
-  if(!seen) showHowToPlay();
+  // Set verse always visible
+  document.getElementById("verse-always-text").textContent=`"${CURRENT_DATA.verse}"`;
+  document.getElementById("verse-always-ref").textContent=`— ${CURRENT_DATA.ref}`;
+  document.getElementById("verse-always-commentary").textContent=CURRENT_DATA.commentary;
+  if(!practiceMode){
+    const seen=localStorage.getItem('swp-seen-howto');
+    if(!seen) showHowToPlay();
+  }
 }
 
+// ── PRACTICE ─────────────────────────────────────────────────────────────────
+window.tryStartPractice=()=>{
+  const s=checkPracticeLockout();
+  if(s.lockoutUntil && Date.now()<s.lockoutUntil){
+    showLockout(s.lockoutUntil); return;
+  }
+  if(s.rounds>=MAX_PRACTICE){
+    showToast("You've completed all 50 practice rounds today! 🙏"); return;
+  }
+  startPracticeRound(s);
+};
+
+function startPracticeRound(s){
+  practiceMode=true;
+  practiceRound=s.rounds+1;
+  s.rounds=practiceRound; savePracticeState(s);
+
+  // Pick word pool based on round
+  const pool=practiceRound>15?HARD_WORDS:EASY_WORDS;
+  let idx, tries=0;
+  do { idx=Math.floor(Math.random()*pool.length); tries++; } while(idx===PUZZLE_NUM&&pool===EASY_WORDS&&tries<10);
+  CURRENT_DATA=pool[idx];
+  WORD=CURRENT_DATA.word; WLEN=WORD.length;
+  guesses=[]; current=""; gameOver=false; hintVisible=false;
+
+  document.getElementById("hint-bar").classList.add("hidden");
+  document.getElementById("aftermath").classList.add("hidden");
+  document.getElementById("lockout-panel").classList.add("hidden");
+  document.getElementById("keyboard").classList.remove("dimmed");
+  initGame();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function showLockout(until){
+  document.getElementById("lockout-panel").classList.remove("hidden");
+  document.getElementById("aftermath").classList.add("hidden");
+  function update(){
+    const rem=until-Date.now();
+    if(rem<=0){ document.getElementById("lockout-panel").classList.add("hidden"); return; }
+    const h=Math.floor(rem/3600000), m=Math.floor((rem%3600000)/60000), s=Math.floor((rem%60000)/1000);
+    document.getElementById("lockout-countdown").textContent=
+      `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  }
+  update(); setInterval(update,1000);
+}
+
+// ── GRID & KEYBOARD ──────────────────────────────────────────────────────────
 function buildGrid(){
-  const grid=document.getElementById("grid"); grid.innerHTML="";
-  const ts=WLEN>=7?44:WLEN>=6?48:52;
+  const g=document.getElementById("grid");
+  g.innerHTML=""; g.classList.remove("dimmed");
+  const ts=WLEN>=9?38:WLEN>=8?42:WLEN>=7?44:WLEN>=6?48:52;
   for(let r=0;r<MAX;r++){
     const row=document.createElement("div"); row.className="row"; row.id=`row-${r}`;
     for(let c=0;c<WLEN;c++){
@@ -367,12 +451,13 @@ function buildGrid(){
       t.style.cssText=`width:${ts}px;height:${ts}px;font-size:${ts-28}px;border:2px solid #5a5a7a44;color:#e8dcc8;background:transparent`;
       row.appendChild(t);
     }
-    grid.appendChild(row);
+    g.appendChild(row);
   }
 }
 
 function buildKeyboard(){
-  const kb=document.getElementById("keyboard"); kb.innerHTML="";
+  const kb=document.getElementById("keyboard");
+  kb.innerHTML=""; kb.classList.remove("dimmed");
   KB_ROWS.forEach(row=>{
     const r=document.createElement("div"); r.className="kb-row";
     row.forEach(k=>{
@@ -385,36 +470,33 @@ function buildKeyboard(){
   });
 }
 
+document.addEventListener("keydown",e=>handleKey(e.key.toUpperCase()));
+
 function handleKey(key){
   if(gameOver) return;
   if(key==="ENTER"){submitGuess();return;}
-  if(key==="⌫"||key==="BACKSPACE"){current=current.slice(0,-1);updateActiveTiles();return;}
-  if(/^[A-Z]$/.test(key)&&current.length<WLEN){current+=key;updateActiveTiles();}
+  if(key==="⌫"||key==="BACKSPACE"){current=current.slice(0,-1);updateActive();return;}
+  if(/^[A-Z]$/.test(key)&&current.length<WLEN){current+=key;updateActive();}
 }
 
-function updateActiveTiles(){
+function updateActive(){
   const row=guesses.length;
   for(let c=0;c<WLEN;c++){
-    const t=document.getElementById(`tile-${row}-${c}`);
+    const t=document.getElementById(`tile-${row}-${c}`); if(!t) return;
     t.textContent=current[c]||"";
     t.style.border=c<current.length?"2px solid #c9942a88":"2px solid #5a5a7a66";
     t.style.animation=current[c]?"pop 0.1s ease":"none";
   }
 }
 
-function getResult(guess){
-  return guess.split("").map((l,i)=>{
-    if(l===WORD[i]) return "correct";
-    if(WORD.includes(l)) return "present";
-    return "absent";
-  });
+function getResult(g){
+  return g.split("").map((l,i)=>l===WORD[i]?"correct":WORD.includes(l)?"present":"absent");
 }
 
 function submitGuess(){
   if(current.length!==WLEN){
     const row=document.getElementById(`row-${guesses.length}`);
-    row.style.animation="shake 0.4s ease";
-    setTimeout(()=>row.style.animation="none",500);
+    if(row){row.style.animation="shake 0.4s ease";setTimeout(()=>row.style.animation="none",500);}
     showToast(`Word must be ${WLEN} letters`); return;
   }
   const result=getResult(current);
@@ -423,29 +505,34 @@ function submitGuess(){
   revealRow(rowIdx,current,result);
   current="";
   const won=result.every(r=>r==="correct");
-  setTimeout(async ()=>{
+  setTimeout(async()=>{
     updateKeyColors();
     if(won){
       gameOver=true;
-      const points=Math.max(65-(guesses.length-1)*10,5);
-      await saveScore(true, guesses.length, points);
-      setTimeout(()=>showResultModal(true),300);
+      const pts=Math.max(65-(guesses.length-1)*10,5);
+      if(!practiceMode) await saveScore(true,guesses.length,pts);
+      setTimeout(()=>endGame(true,guesses.length,pts),400);
     } else if(guesses.length>=MAX){
       gameOver=true;
-      await saveScore(false, guesses.length, 5);
-      setTimeout(()=>showResultModal(false),300);
+      if(!practiceMode) await saveScore(false,guesses.length,5);
+      // Practice fail = lockout
+      if(practiceMode){
+        const s=checkPracticeLockout();
+        s.lockoutUntil=Date.now()+LOCKOUT_MS; savePracticeState(s);
+      }
+      setTimeout(()=>endGame(false,guesses.length,practiceMode?0:5),400);
     }
   },WLEN*150+400);
 }
 
 function revealRow(rowIdx,guess,result){
   for(let c=0;c<WLEN;c++){
-    const t=document.getElementById(`tile-${rowIdx}-${c}`);
+    const t=document.getElementById(`tile-${rowIdx}-${c}`); if(!t) return;
     setTimeout(()=>{
       t.style.animation="flip 0.5s ease";
       setTimeout(()=>{
-        t.style.background=colors[result[c]];
-        t.style.border=`2px solid ${colors[result[c]]}`;
+        t.style.background=clrs[result[c]];
+        t.style.border=`2px solid ${clrs[result[c]]}`;
         t.textContent=guess[c];
       },250);
     },c*150);
@@ -467,36 +554,83 @@ function updateKeyColors(){
   });
 }
 
+// ── AFTERMATH ────────────────────────────────────────────────────────────────
+function endGame(won,attempts,points){
+  document.getElementById("grid").classList.add("dimmed");
+  document.getElementById("keyboard").classList.add("dimmed");
+  showAftermath(won,attempts,points);
+}
+
+function showAftermath(won,attempts,points){
+  document.getElementById("aft-icon").textContent=won?"🙌":"📖";
+  document.getElementById("aft-word").textContent=WORD;
+  document.getElementById("aft-subtext").textContent=won
+    ?(practiceMode?`Practice round ${practiceRound} solved in ${attempts} attempt${attempts>1?'s':''}! 🎉`:`Guessed in ${attempts} attempt${attempts>1?'s':''}! Hallelujah!`)
+    :(practiceMode?`The word was ${WORD}. Practice locked for 12 hours. 🙏`:`The word was ${WORD}. Keep seeking! 🙏`);
+  document.getElementById("aft-attempts").textContent=attempts;
+  document.getElementById("aft-points").textContent=practiceMode?"—":points;
+
+  const s=checkPracticeLockout();
+  const roundsLeft=MAX_PRACTICE-s.rounds;
+  const locked=s.lockoutUntil&&Date.now()<s.lockoutUntil;
+
+  if(practiceMode&&locked){
+    document.getElementById("practice-btn").textContent="⏳  Practice Locked — "+formatCountdown(s.lockoutUntil-Date.now());
+    document.getElementById("practice-btn").disabled=true;
+    startLockoutBtnCountdown(s.lockoutUntil);
+  } else if(practiceMode&&roundsLeft<=0){
+    document.getElementById("practice-btn").textContent="✅  All 50 Practice Rounds Complete Today!";
+    document.getElementById("practice-btn").disabled=true;
+  } else {
+    const label=practiceMode
+      ?`🎮  Next Practice Round (${roundsLeft} of ${MAX_PRACTICE} left)`
+      :`🎮  Play Practice Mode (${MAX_PRACTICE} rounds · No Score)`;
+    document.getElementById("practice-btn").textContent=label;
+    document.getElementById("practice-btn").disabled=false;
+    document.getElementById("practice-btn").onclick=tryStartPractice;
+  }
+
+  if(practiceMode&&locked) showLockout(s.lockoutUntil);
+
+  document.getElementById("aftermath").classList.remove("hidden");
+  setTimeout(()=>document.getElementById("aftermath").scrollIntoView({behavior:"smooth",block:"start"}),100);
+}
+
+function formatCountdown(ms){
+  const h=Math.floor(ms/3600000),m=Math.floor((ms%3600000)/60000),s=Math.floor((ms%60000)/1000);
+  return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+
+function startLockoutBtnCountdown(until){
+  setInterval(()=>{
+    const rem=until-Date.now();
+    if(rem<=0){ document.getElementById("practice-btn").textContent="🎮  Practice Unlocked! Tap to play"; document.getElementById("practice-btn").disabled=false; return; }
+    document.getElementById("practice-btn").textContent="⏳  Locked — "+formatCountdown(rem);
+  },1000);
+}
+
+// ── MAIN COUNTDOWN ────────────────────────────────────────────────────────────
+function startMainCountdown(){
+  function update(){
+    const now=new Date(), tomorrow=new Date(now);
+    tomorrow.setUTCHours(24,0,0,0);
+    document.getElementById("main-countdown").textContent=formatCountdown(tomorrow-now);
+  }
+  update(); setInterval(update,1000);
+}
+startMainCountdown();
+
+// ── UTILS ────────────────────────────────────────────────────────────────────
 function showToast(msg,dur=1800){
   const t=document.getElementById("toast");
   t.textContent=msg; t.classList.remove("hidden");
   setTimeout(()=>t.classList.add("hidden"),dur);
 }
-
-function showResultModal(won){
-  const points=won?Math.max(65-(guesses.length-1)*10,5):5;
-  document.getElementById("modal-icon").textContent=won?"✝":"📖";
-  document.getElementById("modal-title").textContent=won?"Hallelujah!":"Keep Seeking";
-  document.getElementById("modal-word").textContent=WORD;
-  document.getElementById("modal-hint-text").textContent=DAILY.hint;
-  document.getElementById("stat-attempts").textContent=guesses.length;
-  document.getElementById("stat-points").textContent=points;
-  document.getElementById("result-verse-text").textContent=`"${DAILY.verse}"`;
-  document.getElementById("result-verse-ref").textContent=`— ${DAILY.ref}`;
-  document.getElementById("result-verse-commentary").textContent=DAILY.commentary;
-  document.getElementById("result-modal").classList.remove("hidden");
-}
-
-window.toggleHint=()=>{
-  hintVisible=!hintVisible;
-  document.getElementById("hint-bar").classList.toggle("hidden",!hintVisible);
-};
+window.toggleHint=()=>{ hintVisible=!hintVisible; document.getElementById("hint-bar").classList.toggle("hidden",!hintVisible); };
 window.showHowToPlay=()=>document.getElementById("how-modal").classList.remove("hidden");
-window.closeHowToPlay=()=>{
-  localStorage.setItem('swp-seen-howto','1');
-  document.getElementById("how-modal").classList.add("hidden");
-};
-window.closeResultModal=()=>document.getElementById("result-modal").classList.add("hidden");
+window.closeHowToPlay=()=>{ localStorage.setItem('swp-seen-howto','1'); document.getElementById("how-modal").classList.add("hidden"); };
+window.closePlayedModal=()=>document.getElementById("played-modal").classList.add("hidden");
+window.tryStartPractice=tryStartPractice;
 </script>
 </body>
 </html>
