@@ -171,12 +171,6 @@
   <div class="badge" id="badge"></div>
   <div class="mode-tag" id="mode-tag"></div>
 
-  <!-- Countdown -->
-  <div class="countdown-bar" id="countdown-bar">
-    <span class="countdown-label">Next Puzzle At 9 AM In</span>
-    <span class="countdown-timer" id="main-countdown">--:--:--</span>
-  </div>
-
   <!-- Verse (always visible, expands after game) -->
   <div class="verse-block" id="verse-block">
     <div class="verse-label">✝ Verse of the Day</div>
@@ -198,6 +192,11 @@
         <div><div class="astat-num gold" id="aft-points"></div><div class="astat-label">Points</div></div>
       </div>
     </div>
+    <!-- Timer shown in aftermath -->
+    <div id="aftermath-timer" style="display:flex;align-items:center;justify-content:center;gap:8px;background:#fff;border:1px solid var(--border);border-radius:8px;padding:10px 16px;margin-bottom:10px;box-shadow:0 1px 4px var(--shadow)">
+      <span style="font-size:10px;color:var(--text3);letter-spacing:2px;font-weight:700;text-transform:uppercase">Next Puzzle At 9 AM In</span>
+      <span style="font-family:'Cinzel',serif;font-size:18px;color:var(--green2);letter-spacing:4px;font-weight:700" id="aftermath-countdown">--:--:--</span>
+    </div>
     <button class="practice-btn" id="practice-btn" onclick="tryStartPractice()">🎮 &nbsp; Play Practice Mode</button>
     <div class="email-footer">Support & Feedback: <a href="mailto:bloomverseenterprises@gmail.com">bloomverseenterprises@gmail.com</a></div>
   </div>
@@ -207,7 +206,9 @@
     <div style="font-size:32px;margin-bottom:10px">⏳</div>
     <div class="lockout-title">PRACTICE LOCKED</div>
     <div class="lockout-text">"Be still before the Lord and wait patiently for him." — Psalm 37:7<br><br>You failed a practice round. Practice unlocks at 9 AM. Come back then!</div>
+    <div style="font-size:10px;color:var(--text3);letter-spacing:2px;font-weight:700;text-transform:uppercase;margin-bottom:6px">Next unlock in</div>
     <div class="lockout-countdown" id="lockout-countdown">--:--:--</div>
+    <div style="font-size:11px;text-align:center;color:var(--text3);margin-top:14px">Support & Feedback: <a href="mailto:bloomverseenterprises@gmail.com" style="color:var(--green3);font-weight:700;text-decoration:none">bloomverseenterprises@gmail.com</a></div>
   </div>
 
   <div class="keyboard" id="keyboard"></div>
@@ -253,13 +254,25 @@
   <!-- ALREADY PLAYED MODAL (no close button) -->
   <div id="played-modal" class="modal-overlay hidden">
     <div class="modal">
-      <div style="font-size:36px;margin-bottom:12px">✝</div>
-      <div class="modal-title">ALREADY PLAYED</div>
-      <div class="result-box">
-        <div class="result-box-label">Today's Result</div>
-        <div class="result-box-text" id="played-summary"></div>
+      <div style="font-size:11px;color:var(--text3);letter-spacing:3px;text-transform:uppercase;margin-bottom:4px;font-weight:700">✝ Already Played</div>
+      <div class="result-box" style="margin-bottom:12px">
+        <div class="result-box-label" style="font-size:9px">Today's Result</div>
+        <div class="result-box-text" id="played-summary" style="font-size:12px"></div>
       </div>
-      <button class="play-btn" style="background:var(--green3)" onclick="closePlayedModal();tryStartPractice()">🎮 &nbsp; Play Practice Mode</button>
+      <!-- Timer in modal -->
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px 16px;margin-bottom:14px">
+        <span style="font-size:10px;color:var(--text3);letter-spacing:2px;font-weight:700;text-transform:uppercase">Next Puzzle At 9 AM In</span>
+        <span style="font-family:'Cinzel',serif;font-size:18px;color:var(--green2);letter-spacing:4px;font-weight:700" id="played-countdown">--:--:--</span>
+      </div>
+      <!-- Highlighted Verse -->
+      <div style="background:linear-gradient(135deg,#e8f5ee,#f0f8ec);border:2px solid var(--green3);border-radius:12px;padding:16px;margin-bottom:14px;text-align:left">
+        <div style="font-size:9px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;font-weight:700">✝ Verse of the Day</div>
+        <div style="font-style:italic;color:var(--text);font-size:15px;line-height:1.8;margin-bottom:6px" id="played-verse-text"></div>
+        <div style="font-size:11px;color:var(--gold);letter-spacing:1px;font-weight:700;margin-bottom:10px" id="played-verse-ref"></div>
+        <div style="color:var(--text2);font-size:13px;line-height:1.7;border-top:1px solid var(--border);padding-top:10px" id="played-verse-commentary"></div>
+      </div>
+      <button class="play-btn" style="background:var(--green3);margin-bottom:10px" onclick="closePlayedModal();tryStartPractice()">🎮 &nbsp; Play Practice Mode</button>
+      <div style="font-size:11px;text-align:center;color:var(--text3)">Support & Feedback: <a href="mailto:bloomverseenterprises@gmail.com" style="color:var(--green3);font-weight:700;text-decoration:none">bloomverseenterprises@gmail.com</a></div>
     </div>
   </div>
 </div>
@@ -456,9 +469,14 @@ async function checkPlayed(user){
   if(snap.exists()){
     const d=snap.data();
     document.getElementById("played-summary").textContent=
-      d.won?`✅ You guessed "${WORD}" in ${d.attempts} attempt${d.attempts>1?'s':''}! You earned ${d.points} points. New puzzle at 9 AM!`
-           :`❌ Today's word was "${WORD}". You earned 5 participation points. New puzzle at 9 AM!`;
+      d.won?`✅ Guessed "${WORD}" in ${d.attempts} attempt${d.attempts>1?'s':''}! ${d.points} pts.`
+           :`❌ Today's word was "${WORD}". 5 participation pts.`;
+    // Populate verse in modal
+    document.getElementById("played-verse-text").textContent=`"${DAILY.verse}"`;
+    document.getElementById("played-verse-ref").textContent=`— ${DAILY.ref}`;
+    document.getElementById("played-verse-commentary").textContent=DAILY.commentary;
     document.getElementById("played-modal").classList.remove("hidden");
+    startPlayedCountdown();
     gameOver=true;
     initGame();
     expandVerse();
@@ -688,17 +706,22 @@ function showAftermath(won,attempts,points){
   if(practiceMode&&locked)showLockout(s.lockoutUntil);
   document.getElementById("aftermath").classList.remove("hidden");
   setTimeout(()=>document.getElementById("aftermath").scrollIntoView({behavior:"smooth",block:"start"}),150);
+  // Start aftermath countdown
+  function updAft(){const rem=getNext9am()-Date.now();const el=document.getElementById("aftermath-countdown");if(el)el.textContent=fmtMs(Math.max(rem,0));}
+  updAft();setInterval(updAft,1000);
 }
 
 // ── COUNTDOWN to next 9 AM ────────────────────────────────────────────────────
-function startCountdown(){
+function startPlayedCountdown(){
   function upd(){
     const rem=getNext9am()-Date.now();
-    document.getElementById("main-countdown").textContent=fmtMs(Math.max(rem,0));
+    const el=document.getElementById("played-countdown");
+    if(el) el.textContent=fmtMs(Math.max(rem,0));
   }
   upd();setInterval(upd,1000);
 }
-startCountdown();
+// No main page countdown — only show in modals/aftermath
+
 
 function fmtMs(ms){
   const h=Math.floor(ms/3600000),m=Math.floor((ms%3600000)/60000),s=Math.floor((ms%60000)/1000);
